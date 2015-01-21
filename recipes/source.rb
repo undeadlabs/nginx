@@ -23,6 +23,14 @@
 
 # This is for Chef 10 and earlier where attributes aren't loaded
 # deterministically (resolved in Chef 11).
+
+
+# if nginx was installed from a package, uninstall it first
+execute 'apt-get purge -y nginx' do
+  only_if 'dpkg -s nginx'
+end
+
+
 node.load_attribute_by_short_filename('source', 'nginx') if node.respond_to?(:load_attribute_by_short_filename)
 
 nginx_url = node['nginx']['source']['url'] ||
