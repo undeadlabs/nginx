@@ -18,13 +18,13 @@
 # limitations under the License.
 #
 
-include_recipe 'nginx::ohai_plugin'
+include_recipe 'ul-nginx::ohai_plugin'
 
 if platform_family?('rhel')
   if node['nginx']['repo_source'] == 'epel'
     include_recipe 'yum-epel'
   elsif node['nginx']['repo_source'] == 'nginx'
-    include_recipe 'nginx::repo'
+    include_recipe 'ul-nginx::repo'
     package_install_opts = '--disablerepo=* --enablerepo=nginx'
   elsif node['nginx']['repo_source'].to_s.empty?
     log "node['nginx']['repo_source'] was not set, no additional yum repositories will be installed." do
@@ -34,7 +34,7 @@ if platform_family?('rhel')
     fail ArgumentError, "Unknown value '#{node['nginx']['repo_source']}' was passed to the nginx cookbook."
   end
 elsif platform_family?('debian')
-  include_recipe 'nginx::repo' if node['nginx']['repo_source'] == 'nginx'
+  include_recipe 'ul-nginx::repo' if node['nginx']['repo_source'] == 'nginx'
 end
 
 package node['nginx']['package_name'] do
@@ -48,4 +48,4 @@ service 'nginx' do
   action   :enable
 end
 
-include_recipe 'nginx::commons'
+include_recipe 'ul-nginx::commons'

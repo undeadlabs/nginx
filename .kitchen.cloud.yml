@@ -71,38 +71,38 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[nginx::default]
+      - recipe[ul-nginx::default]
   - name: source
     run_list:
-      - recipe[nginx::default]
+      - recipe[ul-nginx::default]
     attributes:
       nginx:
         install_method: source
   - name: upstream_repo
     run_list:
-      - recipe[nginx::repo]
-      - recipe[nginx::default]
+      - recipe[ul-nginx::repo]
+      - recipe[ul-nginx::default]
     attributes:
       nginx:
         repo_source: nginx
   - name: modules
     run_list:
-      - recipe[nginx::source]
+      - recipe[ul-nginx::source]
     attributes:
       nginx:
         source:
           modules:
-            - nginx::headers_more_module
-            - nginx::http_auth_request_module
-            - nginx::http_echo_module
-            - nginx::http_geoip_module
-            - nginx::http_gzip_static_module
-            - nginx::http_realip_module
-            - nginx::http_spdy_module
-            - nginx::http_ssl_module
-            - nginx::http_stub_status_module
-            - nginx::naxsi_module
-            - nginx::ngx_devel_module
-            - nginx::ngx_lua_module
-            - nginx::openssl_source
-            - nginx::upload_progress_module
+            - ul-nginx::headers_more_module
+            - ul-nginx::http_auth_request_module
+            - ul-nginx::http_echo_module
+            - ul-nginx::http_geoip_module
+            - ul-nginx::http_gzip_static_module
+            - ul-nginx::http_realip_module
+            - ul-nginx::http_spdy_module
+            - ul-nginx::http_ssl_module
+            - ul-nginx::http_stub_status_module
+            - ul-nginx::naxsi_module
+            - ul-nginx::ngx_devel_module
+            - ul-nginx::ngx_lua_module
+            - ul-nginx::openssl_source
+            - ul-nginx::upload_progress_module

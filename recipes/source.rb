@@ -47,9 +47,9 @@ unless node['nginx']['source']['use_existing_user']
   end
 end
 
-include_recipe 'nginx::ohai_plugin'
-include_recipe 'nginx::commons_dir'
-include_recipe 'nginx::commons_script'
+include_recipe 'ul-nginx::ohai_plugin'
+include_recipe 'ul-nginx::commons_dir'
+include_recipe 'ul-nginx::commons_script'
 include_recipe 'build-essential::default'
 
 src_filepath  = "#{Chef::Config['file_cache_path'] || '/tmp'}/nginx-#{node['nginx']['source']['version']}.tar.gz"
@@ -74,7 +74,7 @@ node.run_state['nginx_force_recompile'] = false
 node.run_state['nginx_configure_flags'] =
   node['nginx']['source']['default_configure_flags'] | node['nginx']['configure_flags']
 
-include_recipe 'nginx::commons_conf'
+include_recipe 'ul-nginx::commons_conf'
 
 cookbook_file "#{node['nginx']['dir']}/mime.types" do
   source 'mime.types'

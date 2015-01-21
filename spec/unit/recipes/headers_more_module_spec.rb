@@ -1,9 +1,9 @@
 # encoding: utf-8
 
-describe 'nginx::headers_more_module' do
+describe 'ul-nginx::headers_more_module' do
   cached(:chef_run) do
     ChefSpec::SoloRunner.new do |node|
-      node.set['nginx']['source']['modules'] = ['nginx::headers_more_module']
+      node.set['nginx']['source']['modules'] = ['ul-nginx::headers_more_module']
     end.converge(described_recipe)
   end
 

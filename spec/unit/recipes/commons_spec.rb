@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-# running nginx::default as we need service[nginx] to be defined
-describe 'nginx::commons' do
+# running ul-nginx::default as we need service[nginx] to be defined
+describe 'ul-nginx::commons' do
   let(:chef_run) do
-    ChefSpec::SoloRunner.new.converge('nginx::default', described_recipe)
+    ChefSpec::SoloRunner.new.converge('ul-nginx::default', described_recipe)
   end
 
   before do
@@ -17,7 +17,7 @@ describe 'nginx::commons' do
       commons_conf
     ).each do |recipe|
       it "includes the #{recipe} recipe" do
-        expect(chef_run).to include_recipe("nginx::#{recipe}")
+        expect(chef_run).to include_recipe("ul-nginx::#{recipe}")
       end
     end
   end
@@ -74,7 +74,7 @@ describe 'nginx::commons' do
       let(:chef_run) do
         ChefSpec::SoloRunner.new do |node|
           node.set['nginx']['default_site_enabled'] = false
-        end.converge('nginx::default', described_recipe)
+        end.converge('ul-nginx::default', described_recipe)
       end
 
       it 'disables default site' do

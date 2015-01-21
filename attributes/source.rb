@@ -19,7 +19,7 @@
 # limitations under the License.
 #
 
-include_attribute 'nginx::default'
+include_attribute 'ul-nginx::default'
 
 default['nginx']['source']['version']                 = node['nginx']['version']
 default['nginx']['source']['prefix']                  = "/opt/nginx-#{node['nginx']['source']['version']}"
@@ -36,7 +36,7 @@ default['nginx']['source']['version']  = node['nginx']['version']
 default['nginx']['source']['url']      = "http://nginx.org/download/nginx-#{node['nginx']['source']['version']}.tar.gz"
 default['nginx']['source']['checksum'] = '1aafc7f0f530ddaa86d4ba24c14941ce0a584cc896f8261d6218f99625318f8a'
 default['nginx']['source']['modules']  = %w(
-  nginx::http_ssl_module
-  nginx::http_gzip_static_module
+  ul-nginx::http_ssl_module
+  ul-nginx::http_gzip_static_module
 )
 default['nginx']['source']['use_existing_user'] = false
